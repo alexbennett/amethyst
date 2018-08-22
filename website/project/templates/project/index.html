@@ -1,0 +1,14 @@
+{% extends 'project/layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Hello world from the template!</h1>
+        <div class="col-md-12">
+            <ul>
+                {% for project in projects %}
+                <li><a href="/project/{{project.id}}">{{project.title}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
