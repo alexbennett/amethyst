@@ -1,16 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Project
+from .models import Project, SkillCategory, Skill
 
 def index(request):
-    return HttpResponse('Nice!')
+    projects = Project.objects.all()[:10]
+    skill_categories = SkillCategory.objects.all()
+
+    context = {
+        'title': 'Overview',
+        'projects': projects,
+        'skill_categories': skill_categories
+    }
+
+    return render(request, 'base_overview.html', context)
 
 def projects(request):
     projects = Project.objects.all()[:10]
 
     context = {
-        'title': 'Projects',
+        'title': 'Past Projects',
         'projects': projects
     }
 
