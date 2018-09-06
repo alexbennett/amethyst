@@ -45,9 +45,12 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'ckeditor'
+]
 
 LOCAL_APPS = ['apps.portfolio']
 
@@ -135,5 +138,13 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+# Media files (uploads)
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(APPS_DIR.path('media'))
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}

@@ -1,24 +1,34 @@
 from django.contrib import admin
 
-from .models import Project, ProjectImage, Skill, SkillCategory, SubSkill
+from .models import *
+
+class ProjectDocumentInline(admin.StackedInline):
+    model = ProjectDocument
+    extra = 1
 
 class ProjectImageInline(admin.StackedInline):
     model = ProjectImage
     extra = 2
 
-class ProjectAdmin(admin.ModelAdmin):
-    inlines = [ ProjectImageInline ]
+class FeaturedProjectImageInline(admin.StackedInline):
+    model = FeaturedProjectImage
+    extra = 0
 
-class SkillInline(admin.StackedInline):
-    model = Skill
-    extra = 3
+class ProjectAdmin(admin.ModelAdmin):
+    inlines = [ FeaturedProjectImageInline, ProjectImageInline, ProjectDocumentInline ]
 
 class SubSkillInline(admin.StackedInline):
     model = SubSkill
     extra = 1
 
-class SkillCategoryAdmin(admin.ModelAdmin):
-    inlines = [ SkillInline, SubSkillInline ]
+class SkillAdmin(admin.ModelAdmin):
+    inlines = [ SubSkillInline ]
 
+# Register admin modules
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(SkillCategory, SkillCategoryAdmin)
+admin.site.register(SkillCategory)
+admin.site.register(Skill, SkillAdmin)
+admin.site.register(Activity)
+admin.site.register(Honor)
+admin.site.register(Job)
+admin.site.register(PortfolioConfig)
