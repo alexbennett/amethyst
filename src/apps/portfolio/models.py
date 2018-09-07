@@ -4,13 +4,15 @@ from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from django.contrib.sites.models import Site
 
-class PortfolioConfig(models.Model):
-  site = models.OneToOneField(Site, on_delete=models.CASCADE)
-  title = models.CharField(max_length=256)
-  biography = models.TextField(blank=True)
 
-  def __str__(self):
-      return "Portfolio configuration (" + self.title + ")"
+class PortfolioConfig(models.Model):
+    site = models.OneToOneField(Site, on_delete=models.CASCADE)
+    title = models.CharField(max_length=256)
+    biography = models.TextField(blank=True)
+
+    def __str__(self):
+        return "Portfolio configuration (" + self.title + ")"
+
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
@@ -21,27 +23,34 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+
 class ProjectImage(models.Model):
-    project = models.ForeignKey(Project, related_name='images', on_delete=models.CASCADE)
+    project = models.ForeignKey(
+        Project, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/%Y/%m/%d')
 
     def __str__(self):
         return 'Project image'
 
+
 class FeaturedProjectImage(models.Model):
-    project = models.ForeignKey(Project, related_name='featured_images', on_delete=models.CASCADE)
+    project = models.ForeignKey(
+        Project, related_name='featured_images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/%Y/%m/%d')
 
     def __str__(self):
         return 'Featured project image'
 
+
 class ProjectDocument(models.Model):
-    project = models.ForeignKey(Project, related_name='documents', on_delete=models.CASCADE)
+    project = models.ForeignKey(
+        Project, related_name='documents', on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     url = models.CharField(max_length=500)
 
     def __str__(self):
         return self.name
+
 
 class SkillCategory(models.Model):
     name = models.CharField(max_length=200)
@@ -52,24 +61,28 @@ class SkillCategory(models.Model):
     class Meta:
         verbose_name_plural = "skill categories"
 
+
 class Skill(models.Model):
     name = models.CharField(max_length=200)
-    category = models.ForeignKey(SkillCategory, related_name='skills', on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        SkillCategory, related_name='skills', on_delete=models.CASCADE)
     more_info = models.TextField(blank=True)
     related_projects = models.ManyToManyField(Project, blank=True)
-
     slug = models.SlugField(max_length=8, unique=True)
 
     def __str__(self):
         return self.name
 
+
 class SubSkill(models.Model):
     name = models.CharField(max_length=24)
-    parent_skill = models.ForeignKey(Skill, related_name='sub_skills', on_delete=models.CASCADE)
+    parent_skill = models.ForeignKey(
+        Skill, related_name='sub_skills', on_delete=models.CASCADE)
     #category = models.ForeignKey(SkillCategory, related_name='sub_skills', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+
 
 class Activity(models.Model):
     title = models.CharField(max_length=200)
@@ -83,6 +96,7 @@ class Activity(models.Model):
     class Meta:
         verbose_name_plural = "activities"
 
+
 class Honor(models.Model):
     title = models.CharField(max_length=200)
     organization = models.CharField(max_length=100)
@@ -90,6 +104,7 @@ class Honor(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Job(models.Model):
     title = models.CharField(max_length=100)
@@ -102,6 +117,7 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title + " (" + self.employer + ")"
+
 
 class Education(models.Model):
     degree = models.CharField(max_length=100)
