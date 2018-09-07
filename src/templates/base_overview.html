@@ -17,8 +17,8 @@
         <div class="col-lg-9 pt-1">
             <p class="text-justify">
                 Hi, my name is Alex and I'm an electrical engineer living in Chicago, IL. I have extensive applied experience primarily in
-                unmanned aerial systems with a skillset ranging from electrical hardware design and fabrication to embedded and consumer-facing
-                software development. I'm currently working on expanding my embedded system knowledge and playing
+                unmanned aerial systems with a skillset ranging from electrical hardware design and fabrication to embedded and customer-facing
+                software development. I'm currently working on expanding my consumer product development knowledge and playing
                 with autonomous aerial robotics on the side.
                 <br><br> If you'd like to see bit of what I've worked on, please check out the selection of projects shown
                 below!
@@ -32,15 +32,15 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: 150px">
         <div class="carousel-inner">
                 <div class="carousel-item active">
-                        <div class="d-block w-100" style="background: #000; height: 150px"></div>
+                        <div class="d-block w-100 bg-dark" style="height: 150px"></div>
                         <div class="carousel-caption d-none d-md-block p-4" style="bottom: 35px">
                             <h3 class="m-0">Projects</h3>
                         </div>
                     </div>
             {% for project in projects %}
             <div class="carousel-item" style="overflow: hidden; height: 150px">
-                <img class="d-block w-100" src="" alt="First slide">
-                <div class="carousel-caption d-none d-md-block p-4" style="bottom: 35px">
+                    <div class="d-block w-100 bg-dark" style="height: 150px"></div>
+                    <div class="carousel-caption d-none d-md-block p-4" style="bottom: 35px">
                     <h3 class="m-0">{{ project.title }}</h3>
                 </div>
             </div>
