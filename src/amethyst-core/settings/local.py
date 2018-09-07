@@ -8,8 +8,8 @@ DEBUG = env.bool('DJANGO_DEBUG', default=True)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'imenigma_alexben',
-        'USER': 'imenigma_alexben',
+        'NAME': env('DJANGO_MYSQL_DB_NAME', default='database'),
+        'USER': env('DJANGO_MYSQL_USER', default='root'),
         'HOST': env('DJANGO_MYSQL_URL', default='127.0.0.1'),
         'PASSWORD': env('DJANGO_MYSQL_PASSWORD', default='')
     }
