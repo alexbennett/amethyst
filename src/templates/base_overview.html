@@ -64,8 +64,8 @@
         <div class="col-lg-9 pt-1" style="margin-bottom: -1.5rem">
             {% for job in jobs.all %}
             <div class="mb-4">
-                <h5 class="text-muted mb-0">{{ job.title }}</h5>
-                <p class="mb-0">{{ job.employer }} &mdash; {{ job.started|date:"F Y" }} - {{ job.ended|date:"F Y" }}</p>
+                <h5 class="mb-0">{{ job.title }}<span class="text-muted">, {{ job.location }}</span></h5>
+                <p class="text-muted mb-0">{{ job.employer }} &mdash; {{ job.started|date:"F Y" }} - {{ job.ended|date:"F Y" }}</p>
             </div>
             {% endfor %}
         </div>
