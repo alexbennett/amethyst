@@ -102,3 +102,12 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title + " (" + self.employer + ")"
+
+class Education(models.Model):
+    degree = models.CharField(max_length=100)
+    school = models.CharField(max_length=100)
+    started = models.DateField()
+    ended = models.DateField()
+
+    def __str__(self):
+        return self.degree + " (" + self.school + ")"

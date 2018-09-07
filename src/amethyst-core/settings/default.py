@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'amethyst-core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
+        'NAME': 'amethystdb',
     }
 }
 
@@ -130,9 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = str(ROOT_DIR.path('static'))
-STATICFILES_DIRS = (
-    str(APPS_DIR.path('static')),
-)
+STATICFILES_DIRS = ()
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -141,7 +139,7 @@ STATICFILES_FINDERS = (
 # Media files (uploads)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = str(APPS_DIR.path('media'))
+MEDIA_ROOT = str(ROOT_DIR.path('media'))
 
 CKEDITOR_CONFIGS = {
     'default': {

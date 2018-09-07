@@ -7,3 +7,7 @@ env/
 src/apps/static/img/
 src/static/img/
 local.py
+venv/
+migrations/
+amethystdb
+local_sync/

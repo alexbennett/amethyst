@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Project, SkillCategory, Skill, Activity, Honor, Job
+from .models import Project, SkillCategory, Skill, Activity, Honor, Job, Education
 
 
 def index(request):
@@ -11,6 +11,7 @@ def index(request):
     activities = Activity.objects.all()
     honors = Honor.objects.all()
     jobs = Job.objects.all()
+    educations = Education.objects.all()
 
     context = {
         'title': 'Overview',
@@ -19,7 +20,8 @@ def index(request):
         'skills': skills,
         'activities': activities,
         'honors': honors,
-        'jobs': jobs
+        'jobs': jobs,
+        'educations': educations
     }
 
     return render(request, 'base_overview.html', context)

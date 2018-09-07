@@ -111,15 +111,17 @@
             </div>
         </div>
 
-            <div class="row mb-5">
+    <div class="row mb-5">
         <div class="col-lg-3">
             <h2 class="text-muted">Education</h2>
         </div>
         <div class="col-lg-9 pt-1">
-            <div>
-                <h5 class="text-muted mb-0">B.S. in Electrical & Computer Engineering</h5>
-                <p class="mb-0">University of Louisville &mdash; Graduated December 2017</p>
+            {% for education in educations.all %}
+            <div class="mb-4">
+                <h5 class="text-muted mb-0">{{ education.degree }}</h5>
+                <p class="mb-0">{{ education.school }} &mdash; {{ education.started|date:"F Y" }} - {{ education.ended|date:"F Y" }}</p>
             </div>
+            {% endfor %}
         </div>
     </div>
 
