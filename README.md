@@ -1,5 +1,5 @@
 # Amethyst
-Personal porfolio website built using Django + Bootsrap.
+Personal porfolio website built using Django.
 
 ## Requirements
-- Django v2.1
+See requirements.txt. After setting up virtual environment, use `pip install -r requirements.txt`.
