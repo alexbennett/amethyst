@@ -4,8 +4,9 @@ env/
 *.env
 *.DS_Store
 *.pyc
-src/apps/static/img/
+src/apps/static/
 src/static/img/
+src/media/
 venv/
 migrations/
 amethystdb

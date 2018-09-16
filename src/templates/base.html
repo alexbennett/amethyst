@@ -4,6 +4,16 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125548384-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-125548384-1');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -24,7 +34,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="{% static 'img/profile-md.jpeg' %}" width="30" height="30" class="d-inline-block align-top rounded-circle" alt="Alex Bennett">                Alex
                 Bennett
             </a>
@@ -48,9 +58,10 @@
                     </li>
                 </ul>
                 <a class="btn btn-outline-light" role="button" href="mailto:hello@alexben.net">Email <i class="fas fa-envelope"></i></a>
-                <a class="btn btn-outline-light" style="margin-left: 10px" role="button" href="#">Resume <i class="fas fa-download"></i></a>
-                <a class="btn btn-outline-light" style="margin-left: 10px" role="button" href="#" target="_new">GitHub <i
-                        class="fab fa-github"></i></a>
+                <a class="btn btn-outline-light" style="margin-left: 10px" role="button" href="https://www.dropbox.com/s/iom9x3kyfrff0ay/alexbennett_resume_sept2018_rev1.pdf?dl=0">Resume
+                    <i class="fas fa-download"></i></a>
+                <a class="btn btn-outline-light" style="margin-left: 10px" role="button" href="https://github.com/alexbennett" target="_new">GitHub
+                    <i class="fab fa-github"></i></a>
             </div>
         </div>
     </nav>
@@ -61,9 +72,7 @@
         </video>
     </div> -->
 
-    <div>
-        {% block content %} {% endblock %}
-    </div>
+    {% block content %} {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

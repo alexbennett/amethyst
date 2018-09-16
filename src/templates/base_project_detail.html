@@ -1,25 +1,27 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
-<div class="container-fluid header-style1">
+<div class="container-fluid" style="background-position-y: center; background-size: cover;padding-top: 200px; background-position: center; background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(255, 255, 255, 1.0)), url('{{ project.featured_images.all.0.image.url }}');">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
+        <div class="row" style="min-height: 250px">
+            <div class="col-md-9">
                 <div class="badge badge-secondary mb-3" style="padding: 10px;">ABSTRACT</div>
                 <h3>{{ project.title }}</h3>
                 <div>{{ project.abstract|safe }}</div>
             </div>
             <div class="col-lg-3">
-                <div><img src="http://redbirdrobotics.org/new/assets/img/brand/banner_logo_white.svg" alt="RCR" style="height: 100%;display: inline-block; margin: 0 auto;"></div>
+                <div class="p-2" style="position: relative">
+                        <img src="{{ project.logo.url }}" style="max-width: 100%;">
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div class="container">
-    <div>
+    <div class="mb-5">
+        <div class="badge badge-secondary" style="padding: 10px;">PROJECT SUMMARY</div>
         <p class="card-text text-justify">{{ project.description|safe }}</p>
     </div>
 </div>
-
 
 {% if project.documents.count %}
 <div class="container-fluid bg-light" style="padding: 1.5em">
@@ -40,4 +42,5 @@
         </div>
     </div>
 </div>
-{% endif %} {% endblock %}
+{% endif %} 
+{% endblock %}

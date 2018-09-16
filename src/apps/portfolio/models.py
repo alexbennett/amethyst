@@ -19,6 +19,7 @@ class Project(models.Model):
     abstract = RichTextField()
     description = RichTextField()
     created_at = models.DateTimeField(blank=True)
+    logo = models.ImageField(upload_to='img/projects/logos', blank=True)
 
     def __str__(self):
         return self.title
@@ -27,7 +28,7 @@ class Project(models.Model):
 class ProjectImage(models.Model):
     project = models.ForeignKey(
         Project, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/%Y/%m/%d')
+    image = models.ImageField(upload_to='img/projects/images')
 
     def __str__(self):
         return 'Project image'
@@ -36,7 +37,7 @@ class ProjectImage(models.Model):
 class FeaturedProjectImage(models.Model):
     project = models.ForeignKey(
         Project, related_name='featured_images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/%Y/%m/%d')
+    image = models.ImageField(upload_to='img/projects/images/featured')
 
     def __str__(self):
         return 'Featured project image'
