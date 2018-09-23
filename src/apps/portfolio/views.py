@@ -39,9 +39,10 @@ def projects(request):
 
 
 def project_detail(request, project_id):
+    # Get all projects (for header information)
     projects = Project.objects.all()
 
-    # Get project by id
+    # Get specific project by id
     try:
         project_obj = Project.objects.get(id=project_id)
     except Project.DoesNotExist:
@@ -54,3 +55,22 @@ def project_detail(request, project_id):
     }
 
     return render(request, 'base_project_detail.html', context)
+
+def job_detail(request, job_id):
+    # Get all projects (for header information)
+    projects = Project.objects.all()
+
+    # Get specific job by id
+    try:
+        job_obj = Job.objects.get(id=job_id)
+    except Job.DoesNotExist:
+        return HttpResponse("Job not found")
+
+    context = {
+        'title': 'Job Summary',
+        'projects': projects,
+        'job': job_obj
+    }
+    
+    return render(request, 'base_job_detail.html', context)
+

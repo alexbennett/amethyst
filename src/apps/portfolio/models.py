@@ -28,7 +28,7 @@ class Project(models.Model):
 class ProjectImage(models.Model):
     project = models.ForeignKey(
         Project, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='img/projects/images')
+    image = models.ImageField(upload_to='img/projects')
 
     def __str__(self):
         return 'Project image'
@@ -37,7 +37,7 @@ class ProjectImage(models.Model):
 class FeaturedProjectImage(models.Model):
     project = models.ForeignKey(
         Project, related_name='featured_images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='img/projects/images/featured')
+    image = models.ImageField(upload_to='img/projects/featured')
 
     def __str__(self):
         return 'Featured project image'
@@ -69,6 +69,7 @@ class Skill(models.Model):
         SkillCategory, related_name='skills', on_delete=models.CASCADE)
     more_info = models.TextField(blank=True)
     related_projects = models.ManyToManyField(Project, blank=True)
+    related_jobs = models.ManyToManyField("Job", blank=True)
     slug = models.SlugField(max_length=8, unique=True)
 
     def __str__(self):
@@ -77,8 +78,7 @@ class Skill(models.Model):
 
 class SubSkill(models.Model):
     name = models.CharField(max_length=24)
-    parent_skill = models.ForeignKey(
-        Skill, related_name='sub_skills', on_delete=models.CASCADE)
+    parent_skill = models.ForeignKey(Skill, related_name='sub_skills', on_delete=models.CASCADE)
     #category = models.ForeignKey(SkillCategory, related_name='sub_skills', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -114,10 +114,20 @@ class Job(models.Model):
     location = models.CharField(blank=True, max_length=100)
     started = models.DateField()
     ended = models.DateField()
-    current = models.BooleanField(default=False)
+    current = models.BooleanField(default=False) 
+    logo = models.ImageField(upload_to='img/jobs/logos', blank=True)
 
     def __str__(self):
         return self.title + " (" + self.employer + ")"
+
+
+class JobImage(models.Model):
+    job = models.ForeignKey(
+        Job, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='img/jobs')
+
+    def __str__(self):
+        return 'Job image'
 
 
 class Education(models.Model):

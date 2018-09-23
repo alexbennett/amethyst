@@ -1,34 +1,53 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
-<div class="container-fluid" style="background-position-y: center; background-size: cover;padding-top: 200px; background-position: center; background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(255, 255, 255, 1.0)), url('{{ project.featured_images.all.0.image.url }}');">
+<div class="container-fluid text-white pb-3" style="background-position-y: center; background-size: cover;padding-top: 200px; background-position: center; background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.7)), url('{{ project.featured_images.all.0.image.url }}');border-bottom: 2px solid #eee;">
     <div class="container">
-        <div class="row" style="min-height: 250px">
+        <div class="row">
             <div class="col-md-9">
-                <div class="badge badge-secondary mb-3" style="padding: 10px;">ABSTRACT</div>
+                <div class="badge badge-secondary mb-3" style="padding: 10px;">Synopsis</div>
                 <h3>{{ project.title }}</h3>
                 <div>{{ project.abstract|safe }}</div>
             </div>
             <div class="col-lg-3">
                 <div class="p-2" style="position: relative">
-                        <img src="{{ project.logo.url }}" style="max-width: 100%;">
+                    <img src="{{ project.logo.url }}" style="max-width: 100%;">
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container">
+
+<div class="container mt-4">
     <div class="mb-5">
-        <div class="badge badge-secondary" style="padding: 10px;">PROJECT SUMMARY</div>
+        <h4>Project Summary</h4>
         <p class="card-text text-justify">{{ project.description|safe }}</p>
     </div>
 </div>
 
-{% if project.documents.count %}
+{% if project.documents.count or project.images.count %}
 <div class="container-fluid bg-light" style="padding: 1.5em">
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="badge badge-secondary mb-3" style="padding: 10px;">Media</div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center flex-wrap">
+                {% for img in project.images.all %}
+                <div class="w-25 flex-fill h-auto align-middle" style="max-height: 200px; overflow: hidden; margin-bottom: 15px">
+                    <a href="{{ img.image.url }}" data-toggle="lightbox" data-gallery="project-image-gallery"
+                    class="col-sm-2">
+                    <img src="{{ img.image.url }}" style="width: 100%; min-height: 200px">
+                </a>
+                </div>
+                {% endfor %}
+            </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="badge badge-secondary mb-3" style="padding: 10px;">RELATED DOCUMENTS</div>
+                <div class="badge badge-secondary mb-3" style="padding: 10px;">Documents</div>
             </div>
         </div>
         <div class="row">
@@ -42,5 +61,6 @@
         </div>
     </div>
 </div>
-{% endif %} 
+{% endif %}
+
 {% endblock %}

@@ -24,12 +24,19 @@ class SubSkillInline(admin.StackedInline):
 class SkillAdmin(admin.ModelAdmin):
     inlines = [ SubSkillInline ]
 
+class JobImageInline(admin.StackedInline):
+    model = JobImage
+    extra = 2
+
+class JobAdmin(admin.ModelAdmin):
+    inlines = [ JobImageInline ]
+
 # Register admin modules
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(SkillCategory)
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Activity)
 admin.site.register(Honor)
-admin.site.register(Job)
+admin.site.register(Job, JobAdmin)
 admin.site.register(PortfolioConfig)
 admin.site.register(Education)

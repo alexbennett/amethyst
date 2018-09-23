@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div class="container-fluid" style="background: #dedede;">
+    <div class="container">
+        <div class="row py-4 no-gutters" style="min-height: 140px">
+            <div class="col-md-8">
+                <h3>{{ job.employer }}</h3>
+                <h5 class="text-muted">{{ job.title }}</h5>
+                <h6 class="mb-0 text-muted">{{ job.location }} | {{ job.started|date:"F Y" }} &mdash; {{ job.ended|date:"F Y" }}</h6>
+            </div>
+            <div class="col-lg-4">
+                <img src="{{ job.logo.url }}" class="img-responsive float-right" style="height: 90px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="mb-4">
+        <h4>Job Summary</h4>
+        <p class="card-text text-justify">{{ job.description|safe }}</p>
+    </div>
+</div>
+
+{% if job.images.count %}
+<div class="container-fluid bg-light" style="padding: 1.5em">
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="badge badge-secondary mb-3" style="padding: 10px;">Media</div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center flex-wrap">
+            {% for img in job.images.all %}
+            <div class="w-25 flex-fill h-auto align-middle" style="max-height: 200px; overflow: hidden; margin-bottom: 15px">
+            <a href="{{ img.image.url }}" data-toggle="lightbox" data-gallery="job-image-gallery"
+                class="col-sm-2">
+                <img src="{{ img.image.url }}" class="img-responsive" style="width: 100%; min-height: 200px">
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

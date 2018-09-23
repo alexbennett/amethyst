@@ -14,3 +14,5 @@ DATABASES = {
         'PASSWORD': env('DJANGO_MYSQL_PASSWORD', default='')
     }
 }
+
+SITE_ID = 1
