@@ -31,7 +31,7 @@ class ProjectImage(models.Model):
     image = models.ImageField(upload_to='img/projects')
 
     def __str__(self):
-        return 'Project image'
+        return 'project image'
 
 
 class FeaturedProjectImage(models.Model):
@@ -40,7 +40,7 @@ class FeaturedProjectImage(models.Model):
     image = models.ImageField(upload_to='img/projects/featured')
 
     def __str__(self):
-        return 'Featured project image'
+        return 'featured project image'
 
 
 class ProjectDocument(models.Model):
@@ -51,6 +51,16 @@ class ProjectDocument(models.Model):
 
     def __str__(self):
         return self.name
+
+class ProjectVideo(models.Model):
+    project = models.ForeignKey(Project, related_name='videos', on_delete=models.CASCADE)
+    name = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
+    url = models.CharField(max_length=500)
+    thumbnail = models.ImageField(upload_to='img/projects')
+
+    def __str__(self):
+        return 'project video'
 
 
 class SkillCategory(models.Model):

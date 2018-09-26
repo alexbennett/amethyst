@@ -2,6 +2,10 @@ from django.contrib import admin
 
 from .models import *
 
+class ProjectVideoInline(admin.StackedInline):
+    model = ProjectVideo
+    extra = 1
+
 class ProjectDocumentInline(admin.StackedInline):
     model = ProjectDocument
     extra = 1
@@ -15,7 +19,7 @@ class FeaturedProjectImageInline(admin.StackedInline):
     extra = 0
 
 class ProjectAdmin(admin.ModelAdmin):
-    inlines = [ FeaturedProjectImageInline, ProjectImageInline, ProjectDocumentInline ]
+    inlines = [ FeaturedProjectImageInline, ProjectImageInline, ProjectVideoInline, ProjectDocumentInline ]
 
 class SubSkillInline(admin.StackedInline):
     model = SubSkill

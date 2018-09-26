@@ -32,15 +32,25 @@
                 <div class="badge badge-secondary mb-3" style="padding: 10px;">Media</div>
             </div>
         </div>
-        <div class="row d-flex align-items-center flex-wrap">
+        <div class="row d-flex align-items-center flex-wrap px-2">
                 {% for img in project.images.all %}
-                <div class="w-25 flex-fill h-auto align-middle" style="max-height: 200px; overflow: hidden; margin-bottom: 15px">
-                    <a href="{{ img.image.url }}" data-toggle="lightbox" data-gallery="project-image-gallery"
-                    class="col-sm-2">
-                    <img src="{{ img.image.url }}" style="width: 100%; min-height: 200px">
-                </a>
+                <div class="w-25 flex-fill h-auto align-middle col-lg-3 mb-3 px-2" style="max-height: 180px; overflow: hidden;">
+                    <a href="{{ img.image.url }}" data-toggle="lightbox" data-gallery="project-media-gallery"
+                    class="">
+                        <img src="{{ img.image.url }}" style="width: 100%; min-height: 180px;">
+                    </a>
                 </div>
                 {% endfor %}
+
+                {% if project.videos.count %}
+                    {% for video in project.videos.all %}
+                    <div class="w-25 flex-fill h-auto align-middle col-lg-3 mb-3 px-2" style="max-height: 180px; overflow: hidden; max-width: 25%">
+                        <a href="{{ video.url }}" data-toggle="lightbox" data-gallery="project-media-gallery">
+                            <img src="{{ video.thumbnail.url }}" style="width: 100%; min-height: 180px; max-height: 420px">
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
             </div>
     </div>
 
