@@ -22,6 +22,7 @@ RUN python3 -m pip install pip --upgrade
 # Set environment varibles
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV DJANGO_READ_DOT_ENV_FILE 1
 
 # Create and set work directory
 RUN mkdir -p /opt/amethyst
