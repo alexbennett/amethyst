@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  backend:
+    build: .
+    restart: always
+    container_name: backend
+    volumes:
+      - .:/opt/amethyst/src
+      - static_volume:/opt/amethyst/static
+      - media_volume:/opt/amethyst/media
+    ports:
+      - "8000:8000"
+    networks:
+      - main
+
+  frontend:
+    image: nginx:latest
+    container_name: frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/opt/amethyst/static
+      - media_volume:/opt/amethyst/media
+    depends_on:
+      - backend
+    networks:
+      - main
+
+networks:
+    main:
+      driver: bridge
+
+volumes:
+    static_volume:
+    media_volume:

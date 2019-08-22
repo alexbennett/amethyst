@@ -1,15 +1,7 @@
-.vscode/
-__pycache__/
-env/
-*.env
-*.DS_Store
-*.pyc
-src/apps/static/
-src/static/img/
-src/media/
-venv/
-migrations/
-amethystdb
+# Directories
 local_sync/
+tools/
 logs/
-run/
+
+# Crypto
+application/environment
