@@ -55,7 +55,7 @@ THIRD_PARTY_APPS = [
     'ckeditor'
 ]
 
-LOCAL_APPS = ['internal']
+LOCAL_APPS = ['portfolio']
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -75,7 +75,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            str(os.path.join(BASE_DIR, 'internal/templates'))
+            str(os.path.join(BASE_DIR, 'portfolio/templates'))
         ],
         'APP_DIRS': True,
         'OPTIONS': {
