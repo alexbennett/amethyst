@@ -18,7 +18,7 @@ CONDA_ENV_NAME=${CONDA_ENV_NAME-"amethyst"}
 ############################
 
 # Miniconda
-CONDA_PATH="/opt/miniconda3"
+CONDA_PATH="$HOME/miniconda3"
 
 # Define tools directory
 TOOLS_DIR_NAME="tools"

@@ -2,6 +2,7 @@
 local_sync/
 tools/
 logs/
+static/
 
 # Crypto
 application/environment
